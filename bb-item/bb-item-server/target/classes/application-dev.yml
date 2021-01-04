@@ -1,0 +1,53 @@
+server:
+  #服务端口
+  port: 2021
+spring:
+  application:
+    ## 应用名称，会在Eureka中作为服务的id标识（serviceId）com.mysql.jdbc.Driver
+    name: bb-item-server
+
+  redis:
+    host:  bb.redis.com
+    password:  admin1234
+    port: 6379
+    timeout: 10000 #连接超时 毫秒
+    database: 0
+    jedis:
+      pool:
+        maxActive: 1000
+        maxIdle: 500
+        minIdle: 1
+        maxWait: -1 #连接池最大等行时间 -1没有限制
+
+
+  datasource:
+    username: root
+    password: '0PKpK0JJD?mM'
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://mysql.com/lottery?characterEncoding=utf8&useSSL=false&allowPublicKeyRetrieval=true
+    hikari:
+      minimum-idle: 5
+      maximum-pool-size: 500
+      auto-commit: true
+      idle-timeout: 30000
+      pool-name: DatebookHikariCP
+      max-lifetime: 1800000
+      connection-timeout: 10000
+
+
+mybatis:
+  type-aliases-package: com.bb.item.entity
+  configuration:
+    map-underscore-to-camel-case: true
+  mapper-locations: mappers/*.xml
+mapper:
+  wrap-keyword: "`{0}`"
+
+mybatis-plus:
+  global-config:
+    db-config:
+      logic-delete-field: flag  # 全局逻辑删除的实体字段名(since 3.3.0,配置后可以忽略不配置步骤2)
+      logic-delete-value: 1 # 逻辑已删除值(默认为 1)
+      logic-not-delete-value: 0 # 逻辑未删除值(默认为 0)
+#日志文件路径
+#

@@ -1,0 +1,48 @@
+server:
+  #服务端口
+  port: 1088
+spring:
+  application:
+    ## 应用名称，会在Eureka中作为服务的id标识（serviceId）com.mysql.jdbc.Driver
+    name: bb-item-server
+
+  redis:
+    host:  promotion.redis.bbin.com
+    password:  'nmbW_y1:478!?renminbihenzhiqian'
+    port: 6379
+    timeout: 5000 #连接超时 毫秒
+    database: 0
+    jedis:
+      pool:
+        maxActive: 1000
+        maxIdle: 50
+        minIdle: 10
+        maxWait: -1 #连接池最大等行时间 -1没有限制
+
+
+  datasource:
+    username: 'auto_update'
+    password: 'p7oXaL)(8det*&h^540k**76jfikc*f'
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://promotion.mysql.com/lottery?characterEncoding=utf8&useSSL=false&allowPublicKeyRetrieval=true
+    hikari:
+      minimum-idle: 50
+      maximum-pool-size: 1000
+      auto-commit: true
+      idle-timeout: 30000
+      pool-name: DatebookHikariCP
+      max-lifetime: 1800000
+      connection-timeout: 10000
+
+
+
+mybatis:
+  type-aliases-package: com.bb.item.entity
+  configuration:
+    map-underscore-to-camel-case: true
+  mapper-locations: mappers/*.xml
+mapper:
+  wrap-keyword: "`{0}`"
+
+#日志文件路径
+#

@@ -1,0 +1,56 @@
+server:
+  #服务端口
+  port: 1088
+spring:
+  application:
+    ## 应用名称，会在Eureka中作为服务的id标识（serviceId）com.mysql.jdbc.Driver
+    name: bb-item-server
+
+  redis:
+    host:  dev.redis.com
+    password:  admin1234
+    port: 6379
+    timeout: 5000 #连接超时 毫秒
+    database: 0
+    jedis:
+      pool:
+        maxActive: 1000
+        maxIdle: 500
+        minIdle: 1
+        maxWait: -1 #连接池最大等行时间 -1没有限制
+
+
+  datasource:
+    username: root
+    password: '0PKpK0JJD?mM'
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://bbin.com/lottery?characterEncoding=utf8&useSSL=false&allowPublicKeyRetrieval=true
+    hikari:
+      minimum-idle: 5
+      maximum-pool-size: 500
+      auto-commit: true
+      idle-timeout: 30000
+      pool-name: DatebookHikariCP
+      max-lifetime: 1800000
+      connection-timeout: 10000
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:1086/eureka
+  instance:
+    prefer-ip-address: true
+    ip-address: 127.0.0.1
+    lease-renewal-interval-in-seconds: 5 #修改心跳为5s
+    lease-expiration-duration-in-seconds: 15 #修改过期时间
+
+
+mybatis:
+  type-aliases-package: com.bb.item.entity
+  configuration:
+    map-underscore-to-camel-case: true
+  mapper-locations: mappers/*.xml
+mapper:
+  wrap-keyword: "`{0}`"
+
+#日志文件路径
+#
